@@ -1,10 +1,11 @@
+
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
 
-bool BOOL = true ; // global var 
+bool BOOL = false ; // global var 
 
 typedef struct 
 {
@@ -20,7 +21,7 @@ typedef struct
 
     double cash_amount ; 
 
-    int key[2] ; // log in key 
+    int key ; // log in key 
    
 } user_info  ;
 
@@ -75,6 +76,13 @@ void full_users_info(void)
 
     FILE *bank = fopen( CODE , "w") ;
 
+    for( int i = 0 ; i < 70 ;++i)
+    {
+        fprintf(bank,"*") ;
+    }
+
+    fprintf(bank,"\n\n") ;
+
     fprintf(bank," ➢ Familly name : %s\n\n",users.familly_name) ;
 
     fprintf(bank," ➢ First name : %s\n\n",users.first_name) ;
@@ -85,9 +93,21 @@ void full_users_info(void)
 
     fprintf(bank," ➢ Cash amount : %ld \n\n",users.cash_amount) ;
 
+    for( int i = 0 ; i < 70 ;++i)
+    {
+        fprintf(bank,"*") ;
+    }
+
+    fprintf(bank,"\n\n") ;
+
     char cnv ; // converstation
 
+    for( int i = 0 ; i < 70 ;++i)
+    {
+        printf("*") ;
+    }
 
+    printf("\n\n\a") ;
 
     printf(" ➢ Familly name : %s \n\n",users.familly_name) ;
 
@@ -98,6 +118,13 @@ void full_users_info(void)
     printf(" ➢ Your key : %d | ➢ Your code : %s \n\n",users.key ,CODE ) ;
 
     printf(" ➢ Cash amount : %ld \n\n",users.cash_amount) ;
+
+    for( int i = 0 ; i < 70 ;++i)
+    {
+        printf("*") ;
+    }
+
+    printf("\n\n\a") ;
 
     printf(" You are sure that all the info are correct \n\n") ;
 
@@ -110,6 +137,13 @@ void full_users_info(void)
 
     if( cnv == 'y')
     {
+        for( int i = 0 ; i < 70 ;++i)
+        {
+        printf("*") ;
+        }
+
+        printf("\n\n\a") ;
+
         printf(" Do you want to add the cash amount :\t") ;
 
         printf("             | Yes |   or   | No | \n\n") ;
@@ -118,12 +152,23 @@ void full_users_info(void)
 
         scanf("%s",&cnv) ;
 
+        printf("\n\n") ;
+
+        for( int i = 0 ; i < 70 ;++i)
+        {
+        printf("*") ;
+        }
+
+        printf("\n\n\a") ;
+
         if( cnv == 'y')
         {
             printf("add your cash amount :\t") ;
             scanf("%d",&users.cash_amount) ;
 
             fprintf(bank," Your cash amonunt : %d \n\n",users.cash_amount) ;
+
+            rewind(bank) ;
 
             fclose(bank) ;
         }
@@ -133,9 +178,12 @@ void full_users_info(void)
     {
         printf("\n\n") ;
 
-        exit(-1) ;
-    }
+        full_users_info() ;
 
+        fclose(bank) ;
+
+        remove(CODE) ;
+    }
 }
 
 void sign_up(void)
@@ -185,8 +233,6 @@ void PrintTheInfo( user_info users , char *code)
     {
         printf("Error there is no such a information about this account \n\n") ;
 
-        exit(-1) ;
-
         BOOL = false ;
     }
 
@@ -202,6 +248,7 @@ void PrintTheInfo( user_info users , char *code)
 
     fclose(bank) ;
 
+    BOOL == true ;
 }
 
 void log_in(void)
@@ -238,16 +285,19 @@ void log_in(void)
 
     char code[8] ;
 
-    printf(" Your key :\t") ;
-    scanf("%d",&users.key) ;
-    printf("\n\n") ;
+    while( BOOL == false )
+    { 
 
-    printf(" Your code :\t") ;
-    scanf("%s",&code) ;
-    printf("\n\n") ;
+        printf(" Your key :\t") ;
+        scanf("%d",&users.key) ;
+        printf("\n\n") ;
 
-    PrintTheInfo(users ,code) ;
+        printf(" Your code :\t") ;
+        scanf("%s",&code) ;
+        printf("\n\n") ;
 
+        PrintTheInfo(users ,code) ;
+    }
 }
 
 void How_much( user_info users , char *code)
@@ -255,6 +305,15 @@ void How_much( user_info users , char *code)
     char cnv ; // converstation 
 
     long int amount ; 
+
+    FILE *cash ;
+
+    cash = fopen( code ,"a") ;
+
+    if( cash == NULL )
+    {
+        BOOL == false ;
+    }
 
     printf(" Would you like to add or draw the cash \n\n") ;
     printf("                 | Draw |     or    | Add |\n\n") ;
@@ -266,18 +325,17 @@ void How_much( user_info users , char *code)
         printf("How much would you like to draw :") ;
         scanf("%ld",&amount) ;
 
-        FILE *cash ;
-
-        cash = fopen( code ,"a") ;
-
         users.cash_amount = users.cash_amount - amount ;
 
         printf(" Your cash amount now :\t %ld ",users.cash_amount) ;
 
         fprintf(cash," ➢ Cash amount : %ld \n\n",users.cash_amount) ;
 
+        rewind(cash) ;
+
         fclose(cash) ;
 
+        BOOL = true ;
     }
 
     else if( cnv == 'a')
@@ -295,8 +353,11 @@ void How_much( user_info users , char *code)
 
         fprintf(cash," ➢ Cash amount : %ld \n\n",users.cash_amount) ;
 
+        rewind(cash) ;
+
         fclose(cash) ;
 
+        BOOL = true ;
     }
 }
 
@@ -334,15 +395,18 @@ void AddOrDraw(void)
 
     char code[8] ;
 
-    printf(" Your key :\t") ;
-    scanf("%d",&users.key) ;
-    printf("\n\n") ;
+    while( BOOL == false )
+    {   
+        printf(" Your key :\t") ;
+        scanf("%d",&users.key) ;
+        printf("\n\n") ;
 
-    printf(" Your code :\t") ;
-    scanf("%s",&code) ;
-    printf("\n\n") ;
+        printf(" Your code :\t") ;
+        scanf("%s",&code) ;
+        printf("\n\n") ;
 
-    How_much( users,code) ;
+        How_much( users,code) ;
+    }
 }
 
 void Deactivate_your_bank_account(void)
@@ -379,15 +443,35 @@ void Deactivate_your_bank_account(void)
 
     char code[8] ;
 
-    printf(" Your key :\t") ;
-    scanf("%d",&users.key) ;
-    printf("\n\n") ;
+    while(  BOOL == false)
+    {   
+        printf(" Your key :\t") ;
+        scanf("%d",&users.key) ;
+        printf("\n\n") ;
 
-    printf(" Your code :\t") ;
-    scanf("%s",&code) ;
-    printf("\n\n") ;
+        printf(" Your code :\t") ;
+        scanf("%s",&code) ;
+        printf("\n\n") ;
 
-    remove(code) ;
+        FILE *account ;
+
+        account = fopen( code , "r") ;
+
+        if( account == NULL )
+        {
+            BOOL = false ;
+        }
+
+        else
+        {
+            remove(code) ;
+
+            BOOL = true ;
+        }
+
+        fclose(account) ;
+
+    }   
 }
 
 void users_options(void)
@@ -497,10 +581,8 @@ void users_options(void)
             printf("\n\n") ;
 
             exit(-1) ;
-
         }
-    }
-   
+    }  
 }
 
 int main (void)
