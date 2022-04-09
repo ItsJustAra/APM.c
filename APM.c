@@ -29,7 +29,7 @@ void full_users_info(void)
 
     users.cash_amount = 0 ; // cash amount equals zero 
 
-    char CODE[8] ;
+    char CODE[10] ;
 
     int index ;
 
@@ -105,6 +105,37 @@ void full_users_info(void)
         printf("*") ;
     }
 
+    system("cls");
+
+    printf("Loading .") ;
+
+    system("cls") ;
+
+    printf("Loading ..") ;
+
+    system("cls") ;
+
+    printf("Loading ...") ;
+
+    system("cls") ;
+
+    printf("Loading .") ;
+
+    system("cls") ;
+
+    printf("Loading ..") ;
+
+    system("cls") ;
+
+    printf("Loading ...") ;
+
+    system("cls") ;
+
+    for( int i = 0 ; i < 70 ;++i)
+    {
+        printf("*") ;
+    }
+
     printf("\n\n\a") ;
 
     printf(" ➢ Familly name : %s \n\n",users.familly_name) ;
@@ -135,6 +166,32 @@ void full_users_info(void)
 
     if( cnv == 'y')
     {
+        system("cls");
+
+    printf("Loading .") ;
+
+    system("cls") ;
+
+    printf("Loading ..") ;
+
+    system("cls") ;
+
+    printf("Loading ...") ;
+
+    system("cls") ;
+
+    printf("Loading .") ;
+
+    system("cls") ;
+
+    printf("Loading ..") ;
+
+    system("cls") ;
+
+    printf("Loading ...") ;
+
+    system("cls") ;
+
         for( int i = 0 ; i < 70 ;++i)
         {
         printf("*") ;
@@ -161,6 +218,32 @@ void full_users_info(void)
 
         if( cnv == 'y')
         {
+            system("cls");
+
+    printf("Loading .") ;
+
+    system("cls") ;
+
+    printf("Loading ..") ;
+
+    system("cls") ;
+
+    printf("Loading ...") ;
+
+    system("cls") ;
+
+    printf("Loading .") ;
+
+    system("cls") ;
+
+    printf("Loading ..") ;
+
+    system("cls") ;
+
+    printf("Loading ...") ;
+
+    system("cls") ;
+
             printf("add your cash amount :\t") ;
             scanf("%d",&users.cash_amount) ;
 
@@ -186,31 +269,31 @@ void full_users_info(void)
 
 void sign_up(void)
 {
-    system("clear");
+    system("cls");
 
     printf("Loading .") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading ..") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading ...") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading .") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading ..") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading ...") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("                               ▉▉ SIGN UP ▉▉ \n\n") ;
                         
@@ -250,37 +333,37 @@ void PrintTheInfo( user_info users , char *code)
 
 void log_in(void)
 {
-    system("clear");
+    system("cls");
 
     printf("Loading .") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading ..") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading ...") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading .") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading ..") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading ...") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("                               ▉▉ LOG IN ▉▉ \n\n") ;
 
     user_info users ;
 
-    char code[8] ;
+    char code[10] ;
 
     while( BOOL == false )
     { 
@@ -332,6 +415,7 @@ void how_much( user_info users , char *code)
         ch = getc(first_file);
 
         if (ch == '\n')
+
             temp++;
 
         if (temp != line)
@@ -370,37 +454,37 @@ void how_much( user_info users , char *code)
 }
 void AddOrDraw(void)
 {
-    system("clear");
+    system("cls");
 
     printf("Loading .") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading ..") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading ...") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading .") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading ..") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading ...") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("                               ▉▉ LOG IN ▉▉ \n\n") ;
 
     user_info users ;
 
-    char code[8] ;
+    char code[10] ;
 
     while( BOOL == false )
     {   
@@ -418,69 +502,49 @@ void AddOrDraw(void)
 
 void Deactivate_your_bank_account(void)
 {
-    system("clear");
+    system("cls");
 
     printf("Loading .") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading ..") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading ...") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading .") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading ..") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("Loading ...") ;
 
-    system("clear") ;
+    system("cls") ;
 
     printf("                               ▉▉ LOG IN ▉▉ \n\n") ;
 
     user_info users ;
 
-    char code[8] ;
+    char code[10] ;
+    
+    printf(" Your key :\t") ;
+    scanf("%d",&users.key) ;
+    printf("\n\n") ;
 
-    while(  BOOL == false)
-    {   
-        printf(" Your key :\t") ;
-        scanf("%d",&users.key) ;
-        printf("\n\n") ;
+    printf(" Your code :\t") ;
+    scanf("%s",&code) ;
+    printf("\n\n") ;
 
-        printf(" Your code :\t") ;
-        scanf("%s",&code) ;
-        printf("\n\n") ;
-
-        FILE *account ;
-
-        account = fopen( code , "r") ;
-
-        if( account == NULL )
-        {
-            BOOL = false ;
-        }
-
-        else
-        {
-            remove(code) ;
-
-            BOOL = true ;
-
-            printf(" \n Account has been deleted succefully \n\n") ;
-        }
-
-        fclose(account) ;
-
-    }   
+    remove(code) ;
+        
+    printf(" \n Account has been deleted succefully \n\n ");
 }
 
 void users_options(void)
@@ -496,7 +560,7 @@ void users_options(void)
 
     printf("\n\n") ;
 
-    printf("                     1_ ☛ sign up  Create a bank account \n\n") ;
+    printf("                     1_ ☛ sign up  Create a bank account  \n\n") ;
 
     printf("                     2_ ☛ log in your bank account \n\n") ;
 
