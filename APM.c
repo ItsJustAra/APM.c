@@ -89,15 +89,6 @@ void full_users_info(void)
 
     fprintf(bank," ➢ Your key : %d | ➢ Your code : %s \n",users.key ,CODE ) ;
 
-    fprintf(bank," ➢ Cash amount : %ld \n",users.cash_amount) ;
-
-    for( int i = 0 ; i < 70 ;++i)
-    {
-        fprintf(bank,"*") ;
-    }
-
-    fprintf(bank,"\n\n") ;
-
     char cnv ; // converstation
 
     for( int i = 0 ; i < 70 ;++i)
@@ -247,9 +238,14 @@ void full_users_info(void)
             printf("add your cash amount :\t") ;
             scanf("%d",&users.cash_amount) ;
 
-            fprintf(bank," Your cash amonunt : %d \n\n",users.cash_amount) ;
+            fprintf(bank," ➢ Cash amount : %ld \n\n",users.cash_amount) ;
 
-            rewind(bank) ;
+            for( int i = 0 ; i < 70 ;++i)
+            {
+                fprintf(bank,"*") ;
+            }
+
+            fprintf(bank,"\n\n") ;
 
             fclose(bank) ;
         }
@@ -259,11 +255,16 @@ void full_users_info(void)
     {
         printf("\n\n") ;
 
-        full_users_info() ;
+        fprintf(bank," ➢ Cash amount : %ld \n\n",users.cash_amount) ;
 
-        fclose(bank) ;
+        for( int i = 0 ; i < 70 ;++i)
+        {
+            fprintf(bank,"*") ;
+        }
 
-        remove(CODE) ;
+        fprintf(bank,"\n\n") ;
+
+        fclose(bank) ; 
     }
 }
 
