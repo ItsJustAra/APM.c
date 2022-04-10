@@ -211,29 +211,29 @@ void full_users_info(void)
         {
             system("cls");
 
-    printf("Loading .") ;
+            printf("Loading .") ;
 
-    system("cls") ;
+         system("cls") ;
 
-    printf("Loading ..") ;
+        printf("Loading ..") ;
 
-    system("cls") ;
+        system("cls") ;
 
-    printf("Loading ...") ;
+        printf("Loading ...") ;
 
-    system("cls") ;
+        system("cls") ;
 
-    printf("Loading .") ;
+        printf("Loading .") ;
 
-    system("cls") ;
+        system("cls") ;
 
-    printf("Loading ..") ;
+        printf("Loading ..") ;
 
-    system("cls") ;
+        system("cls") ;
 
-    printf("Loading ...") ;
+        printf("Loading ...") ;
 
-    system("cls") ;
+        system("cls") ;
 
             printf("add your cash amount :\t") ;
             scanf("%d",&users.cash_amount) ;
@@ -385,10 +385,12 @@ void how_much( user_info users , char *code)
 {
     char cnv ;
 
+    int new_amount ;
+
     FILE *first_file ;
     FILE *second_file ;
 
-    int line = 9 ;
+    int line = 7 ;
     int temp = 1 ;
     char ch ;
 
@@ -442,7 +444,15 @@ void how_much( user_info users , char *code)
     {
         printf("how much would you like to draw :\t") ;
 
-        scanf("%d",& users.cash_amount) ;
+        scanf("%d",& new_amount) ;
+
+        users.cash_amount -= new_amount ; 
+
+        FILE *acccount_updated = fopen( code ,"w") ;
+
+        fprintf(acccount_updated," ➢ Cash amount : %ld \n\n",users.cash_amount) ;
+
+        fclose(acccount_updated) ;
 
     }
 
@@ -450,7 +460,15 @@ void how_much( user_info users , char *code)
     {
         printf("how much would you like to add :\t") ;
         
-        scanf("%d",& users.cash_amount) ;
+        scanf("%d",& new_amount) ;
+
+        users.cash_amount += new_amount ; 
+
+        FILE *acccount_updated = fopen( code ,"w") ;
+
+        fprintf(acccount_updated," ➢ Cash amount : %ld \n\n",users.cash_amount) ;
+
+        fclose(acccount_updated) ;
     }
 }
 void AddOrDraw(void)
